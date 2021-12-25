@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: webdav
+  IMAGE_NAME: ${{ github.repository }}/webdav
 
 jobs:
   build-and-push-image:
