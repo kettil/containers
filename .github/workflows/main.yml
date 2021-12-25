@@ -44,7 +44,7 @@ jobs:
           context: ./webdav
           push: true
           tags: |
-            ${{ REGISTRY }}/${{ IMAGE_NAME }}:latest
-            ${{ REGISTRY }}/${{ IMAGE_NAME }}:2.4.52
-            ${{ REGISTRY }}/${{ IMAGE_NAME }}:2.4
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:2.4.52
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:2.4
           labels: ${{ steps.meta.outputs.labels }}
