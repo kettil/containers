@@ -32,6 +32,12 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
+      - name: debug - 1
+        run: echo "${{ steps.meta.outputs.tags }}"
+
+      - name: debug - 2
+        run: echo "${{ steps.meta.outputs.labels }}"
+
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
