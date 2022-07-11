@@ -1,4 +1,4 @@
-FROM httpd:2.4.52
+FROM httpd:2.4.54
 
 # Copy in our configuration files.
 COPY dav.conf     conf/conf-available/dav.conf
@@ -22,8 +22,9 @@ RUN set -ex; \
   sed -i -e "/^#LoadModule setenvif_module.*/s/^#//"    "conf/httpd.conf"; \
   sed -i -e "s|^User .*|User www-data|"                 "conf/httpd.conf"; \
   sed -i -e "s|^Group .*|Group www-data|"               "conf/httpd.conf"; \
-  printf '%s\n' "Include conf/conf-enabled/*.conf"  >> "conf/httpd.conf"; \
-  printf '%s\n' "Include conf/sites-enabled/*.conf" >> "conf/httpd.conf"; \
+  sed -i -e "s|^Listen .*|Listen 8080|"                 "conf/httpd.conf"; \
+  printf '%s\n' "Include conf/conf-enabled/*.conf"   >> "conf/httpd.conf"; \
+  printf '%s\n' "Include conf/sites-enabled/*.conf"  >> "conf/httpd.conf"; \
   mkdir -p "conf/conf-enabled"; \
   mkdir -p "conf/sites-enabled"; \
   ln -s ../conf-available/dav.conf "conf/conf-enabled"; \
@@ -31,9 +32,9 @@ RUN set -ex; \
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
-EXPOSE 80/tcp
+EXPOSE 8080/tcp
 
-VOLUME [ "/webdav" ]
+VOLUME [ "/webdav/data" ]
 
 ENTRYPOINT [ "entrypoint.sh" ]
 CMD [ "httpd-foreground" ]
