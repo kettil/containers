@@ -25,7 +25,8 @@ if [ ! -e "/user.passwd" ]; then
 fi
 
 [ ! -d "/webdav/data" ] && mkdir -p "/webdav/data"
-[ ! -e "/webdav/DavLock" ] && touch "/webdav/DavLock"
+[ ! -d "/webdav/lock" ] && mkdir -p "/webdav/lock"
+[ ! -e "/webdav/lock/davLock" ] && touch "/webdav/lock/davLock"
 chown -R www-data:www-data "/webdav"
 
 exec "$@"

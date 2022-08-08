@@ -5,8 +5,8 @@ COPY dav.conf     conf/conf-available/dav.conf
 COPY default.conf conf/sites-available/default.conf
 
 RUN set -ex; \
-  mkdir -p "/var/www/html" "/webdav/data"; \
-  touch "/webdav/DavLock"; \
+  mkdir -p "/var/www/html" "/webdav/data" "/webdav/lock"; \
+  touch "/webdav/lock/davLock"; \
   chown -R www-data:www-data "/webdav"; \
   sed -i -e "/^#LoadModule dav_module.*/s/^#//"         "conf/httpd.conf"; \
   sed -i -e "/^#LoadModule dav_fs_module.*/s/^#//"      "conf/httpd.conf"; \
