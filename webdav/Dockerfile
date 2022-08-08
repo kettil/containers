@@ -5,8 +5,9 @@ COPY dav.conf     conf/conf-available/dav.conf
 COPY default.conf conf/sites-available/default.conf
 
 RUN set -ex; \
-  mkdir -p "/var/www/html" "/webdav/data" "/webdav/lock"; \
-  touch "/webdav/lock/davLock"; \
+  mkdir -p "/var/www/html" "/webdav/data" "/webdav/config"; \
+  touch "/webdav/config/davLock"; \
+  touch "/webdav/config/user.passwd"; \
   chown -R www-data:www-data "/webdav"; \
   sed -i -e "/^#LoadModule dav_module.*/s/^#//"         "conf/httpd.conf"; \
   sed -i -e "/^#LoadModule dav_fs_module.*/s/^#//"      "conf/httpd.conf"; \
@@ -34,7 +35,10 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
 EXPOSE 8080/tcp
 
-VOLUME [ "/webdav/data" ]
+#          33:33
+USER www-data:www-data
+
+VOLUME [ "/webdav/data", "/webdav/config" ]
 
 ENTRYPOINT [ "entrypoint.sh" ]
 CMD [ "httpd-foreground" ]
