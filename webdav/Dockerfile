@@ -28,6 +28,7 @@ RUN set -ex; \
   printf '%s\n' "Include conf/conf-enabled/*.conf"      >> "conf/httpd.conf"; \
   printf '%s\n' "Include conf/sites-enabled/*.conf"     >> "conf/httpd.conf"; \
   printf '%s\n' "PidFile \"/webdav/config/httpd.pid\""  >> "conf/httpd.conf"; \
+  printf '%s\n' "TimeOut 1800"                          >> "conf/httpd.conf"; \
   mkdir -p "conf/conf-enabled"; \
   mkdir -p "conf/sites-enabled"; \
   ln -s ../conf-available/dav.conf "conf/conf-enabled"; \
