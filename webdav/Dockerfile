@@ -18,7 +18,6 @@ RUN set -ex; \
   sed -i -e "/^#LoadModule dav_fs_module.*/s/^#//"         "conf/httpd.conf"; \
   sed -i -e "/^#LoadModule dav_module.*/s/^#//"            "conf/httpd.conf"; \
   sed -i -e "/^#LoadModule headers_module.*/s/^#//"        "conf/httpd.conf"; \
-  sed -i -e "/^#LoadModule http2_module.*/s/^#//"          "conf/httpd.conf"; \
   sed -i -e "/^#LoadModule mime_module.*/s/^#//"           "conf/httpd.conf"; \
   sed -i -e "/^#LoadModule setenvif_module.*/s/^#//"       "conf/httpd.conf"; \
   sed -i -e "s|^#ServerName .*|ServerName localhost|"      "conf/httpd.conf"; \
