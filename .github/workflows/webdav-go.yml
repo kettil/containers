@@ -1,7 +1,9 @@
 name: WebDav (go) - create and publish a docker image
+
 on:
-  push:
-    branches: ["main"]
+  workflow_dispatch:
+  # push:
+  #   branches: ["main"]
 
 env:
   REGISTRY: ghcr.io
