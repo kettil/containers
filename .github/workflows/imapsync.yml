@@ -1,4 +1,4 @@
-name: Create and publish a Docker image
+name: ImapSync - create and publish a docker image
 
 on:
   push:

@@ -1,5 +1,4 @@
-name: Create and publish a Docker image
-
+name: WebDav (go) - create and publish a docker image
 on:
   push:
     branches: ["main"]
